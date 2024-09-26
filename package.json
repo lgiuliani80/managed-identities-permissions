@@ -1,0 +1,17 @@
+{
+  "name": "testgraphmi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/identity": "^4.4.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "express": "^4.21.0",
+    "isomorphic-fetch": "^3.0.0"
+  }
+}
