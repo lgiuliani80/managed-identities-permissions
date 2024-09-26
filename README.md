@@ -5,6 +5,7 @@ This sample demonstrates how to use Managed Identities of Azure App Service to a
 ## How to run this sample
 
 1. Create an App Service for NodeJS in Azure and enable its System Assigned Managed Identity.
+
 2. Run `Grant-MIRole.ps1` script to grant the Managed Identity the required permissions, as in the example below:
 
     ```powershell
@@ -13,7 +14,7 @@ This sample demonstrates how to use Managed Identities of Azure App Service to a
 
     > **NOTE**: you need to be a Global Administrator in the tenant to run this script.
 
-3. Publish the app code to the App Service via VS Code, Github Actions or via CLI:
+3. Publish the app code to the App Service via VS Code, Github Actions or via CLI from the current folder:
 
     ```bash
     az webapp up --name <appservice-name>
