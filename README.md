@@ -6,7 +6,7 @@ This sample demonstrates how to use Managed Identities of Azure App Service to a
 
 1. Create an App Service for NodeJS in Azure and enable its System Assigned Managed Identity.
 
-2. Run `Grant-MIRole.ps1` script to grant the Managed Identity the required permissions, as in the example below:
+2. Run the `Grant-MIRole.ps1` script to grant the Managed Identity the required permissions, as in the example below:
 
     ```powershell
     .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -GraphPermissionName Directory.Read.All
@@ -22,6 +22,6 @@ This sample demonstrates how to use Managed Identities of Azure App Service to a
 
 4. Wait some minutes for the App Service to restart, then access the app in the browser at the URL: `https://<appservice-name>.azurewebsites.net`: it should display the message "Test Graph API token retrieved from Managed Identity".
 
-5. Open `https://<appservice-name>.azurewebsites.net/token`. Copy the token and decode it at [jwt.io](https://jwt.io/). The token should contain the required permissions to access the Graph API [= Directory.Read.All] in the `"roles"` claim.
+5. Open `https://<appservice-name>.azurewebsites.net/token`. Copy the token and decode it at [jwt.io](https://jwt.io/). The token should contain the required permissions to access the Graph API [= `Directory.Read.All`] in the `"roles"` claim.
 
 6. To test the Graph API access, open `https://<appservice-name>.azurewebsites.net/users`. The app should display the list of users in the tenant.
