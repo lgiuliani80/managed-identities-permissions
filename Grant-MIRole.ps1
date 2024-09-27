@@ -12,7 +12,7 @@ $ErrorActionPreference = "Stop"
 $GraphAppId = "00000003-0000-0000-c000-000000000000"
 
 # Get the Graph API Service Principal for this tenant to retrieve its AppRoles [= Application Permissions] and Object Id
-$GraphAPISP = az ad sp show --id $GraphAppId | ConvertFrom-Json
+$GraphAPISP = az ad sp show --id $GraphAppId | ConvertFrom-Json  # ==> GET https://graph.microsoft.com/v1.0/servicePrincipals(appid='00000003-0000-0000-c000-000000000000')
 $AllPermissions = $GraphAPISP.appRoles
 # Get the AppRole Id for the requested permission
 $GraphPermissionId = $AllPermissions | Where-Object {$_.value -eq $GraphPermissionName} | Select-Object -ExpandProperty id
@@ -21,7 +21,7 @@ Write-Host "The AppRole Id for the requested permission is: $GraphPermissionId" 
 
 
 # Get the Service Principal object that represents the specified Managed Identity
-$MSISP = az ad sp list --display-name $ManagedIdentityName | ConvertFrom-Json | Select-Object -First 1
+$MSISP = az ad sp list --display-name $ManagedIdentityName | ConvertFrom-Json | Select-Object -First 1  # ==> GET https://graph.microsoft.com/v1.0/servicePrincipals?$filter=displayName eq '$ManagedIdentityName'
 
 $response = az rest --url "https://graph.microsoft.com/v1.0/servicePrincipals/$($MSISP.id)/appRoleAssignments" | ConvertFrom-Json
 $alreadyAssigned = $response.value | Where-Object { $_.principalId -eq $MSISP.id -and $_.resourceId -eq $GraphAPISP.id -and $_.appRoleId -eq $GraphPermissionId }
