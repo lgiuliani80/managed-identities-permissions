@@ -1,12 +1,12 @@
 {
   "name": "testgraphmi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Express app to test Microsoft Graph API with Managed Identity",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Luca Giuliani (giulianil@microsoft.com)",
   "license": "ISC",
   "dependencies": {
     "@azure/identity": "^4.4.1",
