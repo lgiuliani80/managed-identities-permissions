@@ -9,7 +9,7 @@ This sample demonstrates how to use Managed Identities of Azure App Service to a
 2. Run the `Grant-MIRole.ps1` script to grant the Managed Identity the required permissions, as in the example below:
 
     ```powershell
-    .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -GraphPermissionName Directory.Read.All
+    .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -APIPermissionName Directory.Read.All
     ```
 
     > **NOTE**: you need to be a Global Administrator in the tenant to run this script.
