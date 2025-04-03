@@ -24,7 +24,7 @@ MANDATORY. The name of the Application Permission, inside the API specified in A
 In most of the cases it will be a Graph API application permission name.
 
 .EXAMPLE
-PS> .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -GraphPermissionName Directory.Read.All
+PS> .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -APIPermissionName Directory.Read.All
 
 This example grants the "Directory.Read.All" permission to the Managed Identity named "appservice-name" in the specified tenant.
 
@@ -72,8 +72,8 @@ if (-not $alreadyAssigned) {
     # Prepare the payload for the AppRoleAssignment Graph API Call
     $AppRoleAssignmentPayload = @{
         principalId = $MSISP.id          # The Object Id of the Managed Identity Service Principal
-        resourceId = $GraphAPISP.id      # The Object Id of the Graph API Service Principal
-        appRoleId = $GraphPermissionId   # The AppRole Id of the requested Graph API permission
+        resourceId = $GraphAPISP.id      # The Object Id of the API Service Principal
+        appRoleId = $GraphPermissionId   # The AppRole Id of the requested API permission
     }
     $BodyFile = [System.IO.Path]::GetTempFileName()  # Write the payload to a temporary file
     $AppRoleAssignmentPayload | ConvertTo-Json -Compress | Out-File -Encoding ascii -FilePath $BodyFile
