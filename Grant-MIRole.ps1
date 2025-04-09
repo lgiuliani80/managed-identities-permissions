@@ -10,9 +10,6 @@ REQUIREMENTS:
 - the Azure CLI must be installed and authenticated in the tenant
 - the specified Managed Identity must exist in the tenant
 
-.PARAMETER TenantId
-MANDATORY. The Tenant Id of the Azure AD tenant where the Managed Identity is located.
-
 .PARAMETER ManagedIdentityName
 MANDATORY. The display name of the Managed Identity to which the permission will be granted.
 
@@ -24,7 +21,7 @@ MANDATORY. The name of the Application Permission, inside the API specified in A
 In most of the cases it will be a Graph API application permission name.
 
 .EXAMPLE
-PS> .\Grant-MIRole.ps1 -TenantID "your-tenant-id" -ManagedIdentityName "appservice-name" -APIPermissionName Directory.Read.All
+PS> .\Grant-MIRole.ps1 -ManagedIdentityName "appservice-name" -APIPermissionName Directory.Read.All
 
 This example grants the "Directory.Read.All" permission to the Managed Identity named "appservice-name" in the specified tenant.
 
@@ -34,7 +31,6 @@ Date: 2024-10-01
 Version: 1.0
 #>
 param(
-    [string][Parameter(Mandatory = $true)]$TenantID,
     [string][Parameter(Mandatory = $true)]$ManagedIdentityName,
     [string][Parameter(Mandatory = $false)]$APIAppId = "00000003-0000-0000-c000-000000000000", # default is Graph API Client Id (Fixed)
     [string][Parameter(Mandatory = $true)]$APIPermissionName
